@@ -3,14 +3,23 @@ const express = require('express');
 const mongoose = require('mongoose');
 const transactionRoutes = require('./routes/transactionRoutes');
 const userRoutes = require('./routes/userRoutes');
+const rootRoute = require('./routes/rootRoute');
+
+mongoose.set('strictQuery', false);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Connect to MongoDB (make sure you have MongoDB installed and running)
 mongoose.connect('mongodb://localhost:27017/save_as_you_spend', { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.use(express.json());
+
+// Redirect root path to Swagger documentation
+app.get('/', (req, res) => {
+  res.redirect('/api-docs');
+});
+
+// Include other routes
 app.use('/api/transactions', transactionRoutes);
 app.use('/api/users', userRoutes);
 
