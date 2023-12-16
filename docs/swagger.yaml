@@ -1,0 +1,56 @@
+openapi: 3.0.0
+info:
+  title: Save As You Spend API
+  version: 1.0.0
+paths:
+  /api/transactions:
+    post:
+      summary: Create a new transaction
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: string
+                description:
+                  type: string
+                amount:
+                  type: number
+      responses:
+        '201':
+          description: Transaction created successfully
+  /api/users/{userId}:
+    get:
+      summary: Get user settings
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+    put:
+      summary: Update user settings
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                savingsPercentage:
+                  type: number
+      responses:
+        '200':
+          description: User settings updated successfully

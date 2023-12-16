@@ -1,0 +1,17 @@
+{
+    "name": "save-as-you-spend-api",
+    "version": "1.0.0",
+    "description": "Save As You Spend API",
+    "main": "src/app.js",
+    "scripts": {
+      "start": "node src/app.js"
+    },
+    "keywords": ["save", "spend", "api", "nodejs", "express", "mongodb"],
+    "author": "Fasasi Israel",
+    "license": "MIT",
+    "dependencies": {
+      "express": "^4.17.1",
+      "mongoose": "^6.1.6"
+    }
+  }
+  
